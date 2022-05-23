@@ -6,7 +6,7 @@
      display: grid;
      grid-template-columns: 127px 1fr 1fr;
      grid-template-areas: 
-     "profile__avatar profile__info  profile__add-btn" ;
+     "profile__avatar profile__info  profile__add-btn";
      column-gap:0;
      row-gap: 0;
 }

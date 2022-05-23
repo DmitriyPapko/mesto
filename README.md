@@ -26,4 +26,4 @@
  
 
 **Ссылка на GitHub Pages** 
-* 
+* https://dmitriypapko.github.io/mesto/

@@ -1,22 +1,25 @@
 .profile{
+     box-sizing:border-box;
      max-width: 880px;
-     min-height: 150px;
+     min-height: 120px;
      margin: 0 auto;
-     padding-top: 40px;
+     margin-top: 40px;
      display: grid;
-     grid-template-columns: 127px 1fr 1fr;
+     grid-template-columns: auto 1fr 1fr;
      grid-template-areas: 
      "profile__avatar profile__info  profile__add-btn";
      column-gap:0;
      row-gap: 0;
 }
 
-@media screen and (max-width:630px) {
+
+@media screen and (max-width:660px) {
      .profile{
           max-width: 320px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           text-align: center;
+          grid-template-columns: none;
      }
 }

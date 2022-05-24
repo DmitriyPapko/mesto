@@ -3,7 +3,16 @@
     border: none;
     width: 358px;
     margin: 0 auto;
-    min-height: 14px;
+    min-height: 28px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.3);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 30px;
+}
+.popup__input:first-child{
+  margin-top: 0;
 }
 .popup__input:focus{
     outline: none;
@@ -13,7 +22,7 @@
     outline: none;
 }
 
-@media screen and (max-width:320px) {
+@media screen and (max-width:660px) {
     .popup__input{
         width: 238px;
     }

@@ -6,100 +6,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./pages/index.css">
-    <title>Maesto</title>
+    <title>Место</title>
 </head>
 
-<body class="maesto">
+<body class="mesto">
     <div class="page">
         <header class="header">
             <img src="./img/logo.svg" alt="лого" class="header__logo">
-            <div class="header__line">
-            </div>
         </header>
         <main class="content">
             <section class="profile">
-                <div class="profile__avatar"></div>
+                <div class="profile__avatar" style="background-image: url(./img/image.png)"></div>
                 <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <p class="profile__subtitle">Исследователь океана</p>
-                    <button class="profile__btn"><img src="./img/pancel.svg" alt=""></button>
+                    <h1 class="profile__title" >Жак-Ив Кусто</h1>
+                    <button class="profile__btn" type="submit"></button>
+                    <p class="profile__subtitle">Исследователь океана</p>                 
                 </div>
-                <button class="profile__add-btn"><img src="./img/Vector.svg" alt=""></button>
+                <button class="profile__add-btn"></button>
             </section>
             <section class="elements">
-                <div class="element">
+                <article class="element">
                     <img src="./img/feodosiya.webp" alt="Феодосия" class="element__img">
                     <div class="element__group">
-                        <h3 class="element__text">Феодосия</h3>
-                        <button class="element__heart"> <img class="element__heart-img" src="./img/Group.svg"
-                                alt=""></button>
+                        <h2 class="element__text">Феодосия</h2>
+                        <button class="element__heart" type="submit"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img src="./img/Moscow.jpg" alt="Москва" class="element__img">
                     <div class="element__group">
-                        <h3 class="element__text">Москва</h3>
+                        <h2 class="element__text">Москва</h2>
                         <button class="element__heart"> <img class="element__heart-img" src="./img/Group.svg"
                                 alt=""></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img src="./img/Novosibirsk.jpg" alt="Новосибирск" class="element__img">
                     <div class="element__group">
-                        <h3 class="element__text">Новосибирск</h3>
+                        <h2 class="element__text">Новосибирск</h2>
                         <button class="element__heart"> <img class="element__heart-img" src="./img/Group.svg"
                                 alt=""></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img src="./img/Ялта.webp" alt="Ялта" class="element__img">
                     <div class="element__group">
-                        <h3 class="element__text">Ялта</h3>
+                        <h2 class="element__text">Ялта</h2>
                         <button class="element__heart"> <img class="element__heart-img" src="./img/Group.svg"
                                 alt=""></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img src="./img/Sevastopol.jpg" alt="Севастополь" class="element__img">
                     <div class="element__group">
-                        <h3 class="element__text">Севастополь</h3>
+                        <h2 class="element__text">Севастополь</h2>
                         <button class="element__heart"> <img class="element__heart-img" src="./img/Group.svg"
                                 alt=""></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img src="./img/sants.png" alt="Сант-Петербург" class="element__img">
                     <div class="element__group">
-                        <h3 class="element__text">Сант-Петербург</h3>
+                        <h2 class="element__text">Сант-Петербург</h2>
                         <button class="element__heart"> <img class="element__heart-img" src="./img/Group.svg"
                                 alt=""></button>
                     </div>
-                </div>
+                </article>
             </section>
+        </main>
             <footer class="footer">
                 <p class="footer__text">© 2020 Mesto Russia</p>
             </footer>
-        </main>
         <div class="popup">
-            <form class="popup__container">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <div class="popup__input-block">
-                    <input type="text" placeholder="Имя" class="popup__input popup__input-name">
-                    <div class="popup__line"></div>
-                </div>
-                <div class="popup__input-block">
-                    <input type="text" placeholder="О себе" class="popup__input popup__input-job">
-                    <div class="popup__line"></div>
-                </div>
+            <div class="popup__container">
+            <button class="popup__close" type="button">
+            </button>
+            <h2 class="popup__title">Редактировать профиль</h2>  
+            <form class="popup__form" name="form-mesto">           
+                    <input type="text" name="input-name" placeholder="Имя" class="popup__input popup__input_js_name">                           
+                    <input type="text" name="input-job" placeholder="О себе" class="popup__input popup__input_js_job">                   
                 <button class="popup__save" type="submit">
                     Сохранить
-                </button>
-                <button class="popup__close" type="submit">
-                    <img src="./img/CloseIcon.svg" alt="крестик" class="popup__img-close">
                 </button>
             </form>
         </div>
     </div>
+</div>
     <script src="./scripts/index.js">
     </script>
 </body>

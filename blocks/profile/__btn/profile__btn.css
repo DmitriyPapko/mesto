@@ -7,18 +7,19 @@
     box-sizing:border-box;
     padding: 0;
     margin: 0;
-    position: absolute;
-    left: 306px;
-    top: 37px;
     cursor: pointer;
+    background: url(../../../img/pancel.svg) no-repeat;
+    background-position: center;
+    align-self:center;
 }
 .profile__btn:hover{
     opacity: 0.6;
 }
 
-@media screen and (max-width:630px) {
-    .profile__btn{
-        left: 262px;
-        top: 28px;
-    }
+
+@media screen and (max-width:660px) {
+   .profile__btn{
+    width: 18px;
+    height: 18px;
+   }
 }

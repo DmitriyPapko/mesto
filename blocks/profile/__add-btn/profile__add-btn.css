@@ -11,6 +11,8 @@
     margin: 0;
     margin-top: 35px;
     cursor: pointer;
+    background:url(../../../img/Vector.svg) no-repeat;
+    background-position:center;
 }
 .profile__add-btn:hover{
     opacity: 0.6;

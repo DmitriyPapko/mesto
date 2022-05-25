@@ -13,6 +13,7 @@
 .popup__input:first-child{
   margin-top: 0;
 }
+
 .popup__input:focus{
     outline: none;
 }

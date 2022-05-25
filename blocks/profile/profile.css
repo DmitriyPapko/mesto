@@ -2,18 +2,17 @@
      box-sizing:border-box;
      max-width: 880px;
      min-height: 120px;
-     margin: 0 auto;
-     margin-top: 40px;
+     margin: 40px auto auto auto;
      display: grid;
-     grid-template-columns: auto 1fr 1fr;
+     grid-template-columns: auto 335px 1fr;
      grid-template-areas: 
      "profile__avatar profile__info  profile__add-btn";
-     column-gap:0;
+     column-gap:26.5px;
      row-gap: 0;
 }
 
 
-@media screen and (max-width:660px) {
+@media screen and (max-width:800px) {
      .profile{
           max-width: 320px;
           display: flex;

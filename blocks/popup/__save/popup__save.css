@@ -22,5 +22,7 @@
     .popup__save{
         width: 238px;
         height: 46px;
+        font-size: 14px;
+        line-height: 17px;
     }
 }

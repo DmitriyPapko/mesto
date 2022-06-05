@@ -1,4 +1,4 @@
-.popup_zoom_opened{
+.popup__opened_zoom{
     visibility: visible;
     opacity: 1;
 }

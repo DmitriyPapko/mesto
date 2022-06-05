@@ -84,7 +84,7 @@ const cardInputName = document.querySelector('.popup__input_zoom-name');
 const cardInputImgLink = document.querySelector('.popup__input_zoom-link');
 const cardTemplate = document.querySelector('#template-card').content;
 const newCard = cardTemplate.querySelector('.element').cloneNode(true);
-const zoomPopup  = document.querySelector('.popup_zoom');
+const zoomPopup  = document.querySelector('.popup__zoom');
 
 
 // const deleteButton = document.querySelector('.element__basket').addEventListener('click', e => {
@@ -126,14 +126,14 @@ const createCard = (i) =>{
       } 
     })
     newCard.querySelector('.element__img').onclick = () => {
-      const imgElem = document.querySelector('.popup_zoom_image');
-      const textElem = document.querySelector('.popup_zoom_text');
+      const imgElem = document.querySelector('.popup__image_zoom');
+      const textElem = document.querySelector('.popup__text_zoom');
       imgElem.src = i.link;
       textElem.textContent = i.name;
-      zoomPopup.classList.add('popup_zoom_opened')
+      zoomPopup.classList.add('popup__opened_zoom')
     }
-    const zoomPopupClose = document.querySelector('.popup_zoom_close').addEventListener('click', () => {
-      zoomPopup.classList.remove('popup_zoom_opened')
+    const zoomPopupClose = document.querySelector('.popup__close_zoom').addEventListener('click', () => {
+      zoomPopup.classList.remove('popup__opened_zoom')
     })
 }
 

@@ -84,7 +84,7 @@ const cardInputName = document.querySelector('.popup__input_zoom-name');
 const cardInputImgLink = document.querySelector('.popup__input_zoom-link');
 const cardTemplate = document.querySelector('#template-card').content;
 const newCard = cardTemplate.querySelector('.element').cloneNode(true);
-const zoomPopup  = document.querySelector('.popup__zoom');
+const zoomPopup  = document.querySelector('.zoom__popup');
 
 
 // const deleteButton = document.querySelector('.element__basket').addEventListener('click', e => {

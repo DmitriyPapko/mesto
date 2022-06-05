@@ -1,11 +1,11 @@
-.popup__image_zoom{
+.zoom__image{
     display: block;
     max-width: 75vw;
     max-height: 540px;
 }
 
 @media screen and (max-width:1100px) {
-    .popup__image_zoom{
+    .zoom__image{
         max-height: 75vh;
     }
 }

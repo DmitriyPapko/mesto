@@ -85,8 +85,6 @@ const cardInputImgLink = document.querySelector('.popup__input_zoom-link');
 const cardTemplate = document.querySelector('#template-card').content;
 const newCard = cardTemplate.querySelector('.element').cloneNode(true);
 const zoomPopup  = document.querySelector('.zoom');
-console.log(zoomPopup)
-
 
 // const deleteButton = document.querySelector('.element__basket').addEventListener('click', e => {
 //    const element = e.currentTarget.closest('.element');
@@ -102,7 +100,6 @@ console.log(zoomPopup)
 //     element.classList.add('element__heart-active'); 
 //   } 
 // })
-
 
 const createCard = (i) =>{
   const cardTemplate = document.querySelector('#template-card').content;

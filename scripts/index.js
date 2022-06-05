@@ -133,7 +133,7 @@ const createCard = (i) =>{
       textElem.textContent = i.name;
       zoomPopup.classList.add('zoom__opened')
     }
-    const zoomPopupClose = document.querySelector('.popup__close-zoom').addEventListener('click', () => {
+    const zoomPopupClose = document.querySelector('.popup__close-z').addEventListener('click', () => {
       zoomPopup.classList.remove('zoom__opened')
     })
 }

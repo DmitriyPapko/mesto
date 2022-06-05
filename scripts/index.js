@@ -77,11 +77,11 @@ function closePopupCard() {
 addBtnCard.addEventListener('click', openPopupCard);
 closePopupBtnCard.addEventListener('click', closePopupCard);
 
-const btnCreateCard = document.querySelector('.popup_form_new-place');
+const btnCreateCard = document.querySelector('.popup__form_new-place');
 const card = document.querySelector('.element');
 const cards = document.querySelector('.elements');
-const cardInputName = document.querySelector('.popup_zoom_name');
-const cardInputImgLink = document.querySelector('.popup_zoom_link');
+const cardInputName = document.querySelector('.popup__input_zoom-name');
+const cardInputImgLink = document.querySelector('.popup__input_zoom-link');
 const cardTemplate = document.querySelector('#template-card').content;
 const newCard = cardTemplate.querySelector('.element').cloneNode(true);
 const zoomPopup  = document.querySelector('.popup_zoom');

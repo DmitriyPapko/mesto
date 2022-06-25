@@ -1,0 +1,17 @@
+.form__input-error{
+    display: inline-block;
+    margin:0;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    width: 363px;
+    text-align: left;
+    /* padding-left: 36px; */
+}
+
+@media screen and (max-width:660px) {
+    .form__input-error{
+        width:240px;
+    }
+}

@@ -34,16 +34,35 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+const popupList = Array.from(document.querySelectorAll('.popup'))
+const checkEsc = (e) =>{
+   if(e.key === 'Escape'){
+    popupList.forEach(popup => {
+      closePopup(popup);   
+    })
+  };
+  };
+
+popupList.forEach(popup => {
+  popup.addEventListener('click', (e) =>{
+    if(e.target == popup){
+      closePopup(popup)
+    }
+  })
+})
 
 
 function openPopup(popup) {
   popup.classList.add('popup_opened'); 
-}
+  document.addEventListener('keydown', checkEsc)
+};
+
 
 
 const closePopup = (popup) =>{
  popup.classList.remove('popup_opened')
-}
+ document.removeEventListener('keydown', checkEsc)
+};
 
 
 
@@ -52,7 +71,7 @@ function handleProfileFormSubmit(evt) {
   profileTitle.textContent = popupInputName.value;
   profileSubtitle.textContent = popupInputJob.value;
   closePopup(profilePopup);
-}
+};
 
 
 editPopup.addEventListener('click', () =>{
@@ -91,6 +110,8 @@ const imgElem = document.querySelector('.zoom-popup__image');
 const textElem = document.querySelector('.zoom-popup__text');
 const zoomPopupClose = document.querySelector('.zoom-popup__close');
 
+
+
 const createCard = (i) =>{
   const cardTemplate = document.querySelector('#template-card').content;
   const newCard = cardTemplate.querySelector('.element').cloneNode(true);
@@ -113,12 +134,18 @@ const createCard = (i) =>{
         element.classList.add('element__heart-active'); 
       } 
     })
-    newCard.querySelector('.element__img').onclick = () => {
+    newCard.querySelector('.element__img').addEventListener('click', () => {
       imgElem.src = i.link;
       textElem.textContent = i.name;
       imgElem.alt = i.name;
-      zoomPopup.classList.add('popup_opened')
-    }
+      openPopup(zoomPopup)
+    })
+    // newCard.querySelector('.element__img').onclick = () => {
+    //   imgElem.src = i.link;
+    //   textElem.textContent = i.name;
+    //   imgElem.alt = i.name;
+    //   zoomPopup.classList.add('popup_opened')
+    // }
     return newCard;
 }
 
@@ -144,6 +171,71 @@ const saveCard = (evt) => {
   cards.prepend(createCard(i))
 }
 
+
+
 btnCreateCard.addEventListener('submit', saveCard);
 
 
+
+
+// console.log(enableValidation.formSel)
+// const formEl = document.querySelector('.form')
+// const inputElement = document.querySelector('.popup__input');
+// const showInputError = (formEl, inputElement, errorMessage) => {
+//     const errorElement = formEl.querySelector(`.${inputElement.id}-error`);
+//     inputElement.classList.add('popup__input_error');   
+//     errorElement.textContent = errorMessage;
+//     errorElement.classList.add('form__input-error');
+//   };    
+
+//   const hideInputError = (formEl, inputElement) => {
+//     const errorElement = formEl.querySelector(`.${inputElement.id}-error`);
+//     inputElement.classList.remove('popup__input_error');
+//     errorElement.classList.remove('form__input-error');
+//     errorElement.textContent = '';
+//   };
+
+//   const checkInputValidity = (formEl, inputElement) => {
+//     if (!inputElement.validity.valid) {
+//       showInputError(formEl, inputElement, inputElement.validationMessage);
+//     } else {
+//       hideInputError(formEl, inputElement);
+//     }
+//   };
+
+//   const  hasInvalidInput = (inputList) =>{
+//     return inputList.some((inputElement) => {
+//      return !inputElement.validity.valid;
+//    })
+//  }
+ 
+//  const toggleButtonState = (inputList, buttonElement) =>{
+//     if (hasInvalidInput(inputList)){
+//         buttonElement.classList.add('popup__save-disable');
+//     }else{
+//         buttonElement.classList.remove('popup__save-disable');
+//     }
+//   }
+
+//   const setEventListeners = (formEl) => {
+//     const inputList = Array.from(formEl.querySelectorAll('.popup__input'));
+//     const buttonElement = formEl.querySelector('.popup__save');
+//     inputList.forEach((inputElement) => {
+//       inputElement.addEventListener('input', function () {
+//         checkInputValidity(formEl, inputElement);   
+//         toggleButtonState(inputList, buttonElement);
+//       });
+//     });
+//     toggleButtonState(inputList, buttonElement);
+//   }; 
+//   const isValid = () => {
+//     const formList = Array.from(document.querySelectorAll('.form'));
+//     formList.forEach((formEl) => {
+//       formEl.addEventListener('submit', function (e) {
+//         e.preventDefault();
+//       });
+//       setEventListeners(formEl) 
+//     });
+//   };
+  
+//  isValid()

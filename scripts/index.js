@@ -77,6 +77,10 @@ function handleProfileFormSubmit(evt) {
 editPopup.addEventListener('click', () =>{
   popupInputName.value = profileTitle.textContent;
   popupInputJob.value = profileSubtitle.textContent;
+  const buttonElement = document.querySelector('.popup__save');
+  buttonElement.classList.remove('popup__save-disable')
+  buttonElement.disabled = false
+  
   openPopup(profilePopup);
 });
 
@@ -86,15 +90,16 @@ closePopupBtn.addEventListener('click', () => {
 
 formElement.addEventListener('submit', handleProfileFormSubmit);
 
-const addBtnCard = document.querySelector('.profile__add-btn');
+const BtnAddCard = document.querySelector('.profile__add-btn');
 const popupCard = document.querySelector('.popup_card');
 const closePopupBtnCard = document.querySelector('.popup__close-card');
 
 
-addBtnCard.addEventListener('click', () => {
+BtnAddCard.addEventListener('click', () => {
   openPopup(popupCard);
 });
 closePopupBtnCard.addEventListener('click', () => {
+ 
   closePopup(popupCard);
 });
 
@@ -118,7 +123,6 @@ const createCard = (i) =>{
   newCard.querySelector('.element__text').textContent = i.name;
   newCard.querySelector('.element__img').src = i.link;
   newCard.querySelector('.element__img').alt = i.name;
-  // cards.prepend(newCard);
 
     newCard.querySelector('.element__basket').addEventListener('click', e => {
     const element = e.currentTarget.closest('.element');
@@ -140,12 +144,6 @@ const createCard = (i) =>{
       imgElem.alt = i.name;
       openPopup(zoomPopup)
     })
-    // newCard.querySelector('.element__img').onclick = () => {
-    //   imgElem.src = i.link;
-    //   textElem.textContent = i.name;
-    //   imgElem.alt = i.name;
-    //   zoomPopup.classList.add('popup_opened')
-    // }
     return newCard;
 }
 
@@ -158,7 +156,7 @@ initialCards.forEach((i) => {
   cards.prepend(cardElement)
 })
 
-// initialCards.forEach(createCard);
+
 
 const saveCard = (evt) => {
   evt.preventDefault();
@@ -167,6 +165,9 @@ const saveCard = (evt) => {
   i.name = cardInputName.value;
   i.link = cardInputImgLink.value
   closePopup(popupCard);
+  const buttonElement = document.querySelector('.popup__create-card');
+  buttonElement.classList.add('popup__save-disable')
+  buttonElement.disabled = true
   btnCreateCard.reset();
   cards.prepend(createCard(i))
 }

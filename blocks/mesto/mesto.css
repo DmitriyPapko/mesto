@@ -1,4 +1,12 @@
 .mesto{
     background-color:  #000000;
-   
+    
 }
+
+input {
+    border-radius: 0;
+  }
+  
+input[type="search"] {
+    -webkit-appearance: none;
+  }

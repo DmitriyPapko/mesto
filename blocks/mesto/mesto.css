@@ -1,6 +1,8 @@
 .mesto{
     background-color:  #000000;
-    
+    -webkit-border-radius:0px;
+    -webkit-appearance: none;
+       border-radius: 0;
 }
 
 input {

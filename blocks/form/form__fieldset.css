@@ -1,0 +1,24 @@
+.form__fieldset{
+    display: block;
+    border: none;
+    margin: 0 auto;
+    min-height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 358px;
+    padding-top: 13px;
+}
+
+/* .form__fieldset:last-child{
+    padding-top: 0;
+    border:1px red solid;
+    margin-bottom: 33px;
+} */
+
+@media screen and (max-width:660px) {
+    .form__fieldset{
+        width: 234px;
+        min-height: 15px;
+    }
+}

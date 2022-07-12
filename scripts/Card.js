@@ -31,8 +31,7 @@ class Card {
 
     _likeCard(e){
         this._elem = e.currentTarget.closest('.element__heart');
-        this._elem.classList.contains('element__heart-active') ?
-        this._elem.classList.remove('element__heart-active') : this._elem.classList.add('element__heart-active');
+        this._elem.classList.toggle('element__heart-active');  //1
     }
     
     render(){
@@ -44,7 +43,7 @@ class Card {
         this.name.textContent = this._name;
         this._addEventListeners();
 
-        this._card.querySelector('.element__img')
+        this.link
         .addEventListener('click', 
         () =>{
             this.nameZoom = document.querySelector('.zoom-popup__text');

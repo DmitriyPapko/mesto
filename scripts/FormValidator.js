@@ -12,6 +12,15 @@ export class FormValidator {
         this._buttonElement = formEl.querySelector(config.submitButtonSelector);
     }
 
+    _resetButton(){
+      this._buttonElementCreateCard = document.querySelector('.popup__create-card');
+      this._buttonElementCreateCard.classList.add('popup__save-disable')
+      this._buttonElementCreateCard.disabled = true
+      this._buttonElementSaveProfile = document.querySelector('.popup__save');
+      this._buttonElementSaveProfile.classList.remove(this._inactiveButtonClass);
+      this._buttonElementSaveProfile.disabled = false; 
+    }  
+
      _showInputError  (inputElement, errorMessage) {
         this._errorElement = this._formEl.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.add(this._inputErrorClass);   
@@ -34,24 +43,25 @@ export class FormValidator {
         }
       };
     
-        _hasInvalidInput  (inputList) {
-        return inputList.some((inputElement) => {
+        _hasInvalidInput  () {
+        return this._inputList.some((inputElement) => {
          return !inputElement.validity.valid;
        })
      }
-     
+         
       _toggleButtonState  () {
-        if (this._hasInvalidInput(this._inputList)){
+        if (!this._hasInvalidInput()){
+          this._buttonElement.classList.remove(this._inactiveButtonClass);
+          this._buttonElement.disabled = false
+        }else{
             this._buttonElement.classList.add(this._inactiveButtonClass);
             this._buttonElement.disabled = true
-        }else{
-            this._buttonElement.classList.remove(this._inactiveButtonClass);
-            this._buttonElement.disabled = false
         }
       }
       
     
       _setEventListeners  () { 
+        this._resetButton();
         this._inputList.forEach((inputElement) => {
           inputElement.addEventListener('input', () =>  {
             this._checkInputValidity(inputElement);  
@@ -62,12 +72,9 @@ export class FormValidator {
       }; 
       
       enableValidation ()  {
-        // const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
-        this._toggleButtonState();
-        // const formList = Array.from(document.querySelectorAll(config.formSel));   
-            this._formEl.addEventListener('submit', function (e) {
-            e.preventDefault();      
-        }); 
-        this._setEventListeners()
-      };
+        
+        this._toggleButtonState();   
+        this._setEventListeners() 
+
+      }; 
     }

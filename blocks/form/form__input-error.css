@@ -1,4 +1,5 @@
 .form__input-error{
+    max-height: 30px;
     display: inline-block;
     margin:0;
     font-weight: 400;
@@ -7,7 +8,11 @@
     color: #FF0000;
     width: 363px;
     text-align: left;
-    /* padding-left: 36px; */
+    min-height: 30px;
+}
+
+.form__fieldset-url{
+    margin-bottom: 33px;
 }
 
 @media screen and (max-width:660px) {

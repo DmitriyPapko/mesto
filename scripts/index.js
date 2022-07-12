@@ -1,12 +1,12 @@
-const editPopup = document.querySelector('.profile__btn');
+const btnEditPopup = document.querySelector('.profile__btn');
 const profilePopup = document.querySelector('.profile-popup');
-const closePopupBtn = document.querySelector('.popup__close');
+const btnClosePopup = document.querySelector('.popup__close');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const popupInputName = document.querySelector('.popup__input_js_name');
 const popupInputJob = document.querySelector('.popup__input_js_job');
-const formElement = document.querySelector('.popup__form');
-const btnCreateCard = document.querySelector('.popup__form_new-place');
+const formElement = document.querySelector('#profile');
+const formCard = document.querySelector('.popup__form_new-place');
 const cards = document.querySelector('.elements');
 const cardInputName = document.querySelector('.popup__input_zoom-name');
 const cardInputImgLink = document.querySelector('.popup__input_zoom-link');
@@ -15,7 +15,8 @@ const zoomPopupClose = document.querySelector('.zoom-popup__close');
 const popupList = Array.from(document.querySelectorAll('.popup'));
 const btnAddCard = document.querySelector('.profile__add-btn');
 const popupCard = document.querySelector('.popup_card');
-const closePopupBtnCard = document.querySelector('.popup__close-card');
+const btnClosePopupCard = document.querySelector('.popup__close-card');
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -55,9 +56,8 @@ const config = {
 
 const checkEsc = (e) =>{
    if(e.key === 'Escape'){
-    popupList.forEach(popup => {
-      closePopup(popup);   
-    })
+    const popupOpen= document.querySelector('.popup_opened')
+    closePopup(popupOpen);
   };
   };
 
@@ -92,17 +92,13 @@ function handleProfileFormSubmit(evt) {
 };
 
 
-editPopup.addEventListener('click', () =>{
+btnEditPopup.addEventListener('click', () =>{
   popupInputName.value = profileTitle.textContent;
   popupInputJob.value = profileSubtitle.textContent;
-  const buttonElement = document.querySelector('.popup__save');
-  buttonElement.classList.remove('popup__save-disable')
-  buttonElement.disabled = false
-  
   openPopup(profilePopup);
 });
 
-closePopupBtn.addEventListener('click', () => {
+btnClosePopup.addEventListener('click', () => {
   closePopup(profilePopup);
 });
 
@@ -116,24 +112,23 @@ btnAddCard.addEventListener('click', () => {
   openPopup(popupCard);
 });
 
-closePopupBtnCard.addEventListener('click', () => {
+btnClosePopupCard.addEventListener('click', () => {
   closePopup(popupCard);
 });
-
-
-
 
 
 zoomPopupClose.addEventListener('click', () => {
   closePopup(zoomPopup);
 })
 
-initialCards.forEach((i) => {
+const createCard = (i) =>{
   const card = new Card(i, '#template-card')
-  const cardElement = card.render(i);
-  cards.prepend(cardElement)
-})
+  return card.render();
+}
 
+initialCards.forEach((i) => {
+  cards.prepend(createCard(i))
+})
 
 
 const saveCard = (evt) => {
@@ -143,24 +138,23 @@ const saveCard = (evt) => {
   i.name = cardInputName.value;
   i.link = cardInputImgLink.value
   closePopup(popupCard);
-  const buttonElement = document.querySelector('.popup__create-card');
-  buttonElement.classList.add('popup__save-disable')
-  buttonElement.disabled = true
-  btnCreateCard.reset();
-  const card = new Card(i, '#template-card')
-  cards.prepend(card.render(i))
+  formCard.reset();
+  cards.prepend(createCard(i))
 }
 
-btnCreateCard.addEventListener('submit', saveCard);
-const enableValidation = (config) =>{
-  const formProfile = document.querySelector('.form')
-  const formNewPlace = document.querySelector('.popup__form_new-place')
-  const  validateProfile = new FormValidator(config, formProfile);
-  const  validateNewPlace = new FormValidator(config, formNewPlace);
-  validateProfile.enableValidation();
-  validateNewPlace.enableValidation();
-}
-enableValidation(config);
+
+formCard.addEventListener('submit', saveCard);
+const enableValidation = (config) =>{ 
+  const formProfile = document.querySelector('.form') 
+  const formNewPlace = document.querySelector('.popup__form_new-place') 
+  const  validateProfile = new FormValidator(config, formProfile); 
+  const  validateNewPlace = new FormValidator(config, formNewPlace); 
+  validateProfile.enableValidation(); 
+  validateNewPlace.enableValidation(); 
+} 
+
+
+enableValidation(config)
 
 import { FormValidator} from './FormValidator.js';
 import{Card} from './Card.js'

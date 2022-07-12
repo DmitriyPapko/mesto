@@ -31,7 +31,7 @@ class Card {
 
     _likeCard(e){
         this._elem = e.currentTarget.closest('.element__heart');
-        this._elem.classList.toggle('element__heart-active');  //1
+        this._elem.classList.toggle('element__heart-active');  
     }
     
     render(){

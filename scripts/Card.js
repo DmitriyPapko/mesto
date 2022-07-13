@@ -20,18 +20,17 @@ class Card {
         this._card.querySelector('.element__basket')
             .addEventListener('click', this._deleteCard);
         this._card.querySelector('.element__heart')
-            .addEventListener('click', this._likeCard);
-        this._card.querySelector('submit',this._saveCard);        
+            .addEventListener('click', this._likeCard);       
     }
-  
+
+
     _deleteCard(e){
         this._elem = e.currentTarget.closest('.element');
         this._elem.remove();  
     }
 
     _likeCard(e){
-        this._elem = e.currentTarget.closest('.element__heart');
-        this._elem.classList.toggle('element__heart-active');  
+        e.currentTarget.classList.toggle('element__heart-active');   
     }
     
     render(){

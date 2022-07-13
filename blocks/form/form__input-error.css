@@ -1,6 +1,5 @@
 .form__input-error{
-    max-height: 30px;
-    display: inline-block;
+    display: block;
     margin:0;
     font-weight: 400;
     font-size: 12px;
@@ -9,6 +8,7 @@
     width: 363px;
     text-align: left;
     min-height: 30px;
+    padding-top: 2px;
 }
 
 .form__fieldset-url{

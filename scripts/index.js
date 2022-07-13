@@ -16,7 +16,8 @@ const popupList = Array.from(document.querySelectorAll('.popup'));
 const btnAddCard = document.querySelector('.profile__add-btn');
 const popupCard = document.querySelector('.popup_card');
 const btnClosePopupCard = document.querySelector('.popup__close-card');
-
+const formProfile = document.querySelector('.form') 
+const formNewPlace = document.querySelector('.popup__form_new-place') 
 const initialCards = [
   {
     name: 'Архыз',
@@ -52,7 +53,9 @@ const config = {
   inputErrorClass: 'popup__input_error',
   errorClass: 'form__input-error'
 }
-
+//Classes
+const  validateProfile = new FormValidator(config, formProfile); 
+const  validateNewPlace = new FormValidator(config, formNewPlace);
 
 const checkEsc = (e) =>{
    if(e.key === 'Escape'){
@@ -95,6 +98,7 @@ function handleProfileFormSubmit(evt) {
 btnEditPopup.addEventListener('click', () =>{
   popupInputName.value = profileTitle.textContent;
   popupInputJob.value = profileSubtitle.textContent;
+  validateProfile.toggleButtonState();
   openPopup(profilePopup);
 });
 
@@ -109,6 +113,7 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 
 
 btnAddCard.addEventListener('click', () => {
+  validateNewPlace.toggleButtonState();
   openPopup(popupCard);
 });
 
@@ -138,17 +143,15 @@ const saveCard = (evt) => {
   i.name = cardInputName.value;
   i.link = cardInputImgLink.value
   closePopup(popupCard);
-  formCard.reset();
   cards.prepend(createCard(i))
+  formCard.reset();
 }
 
 
+
 formCard.addEventListener('submit', saveCard);
-const enableValidation = (config) =>{ 
-  const formProfile = document.querySelector('.form') 
-  const formNewPlace = document.querySelector('.popup__form_new-place') 
-  const  validateProfile = new FormValidator(config, formProfile); 
-  const  validateNewPlace = new FormValidator(config, formNewPlace); 
+
+const enableValidation = () =>{  
   validateProfile.enableValidation(); 
   validateNewPlace.enableValidation(); 
 } 

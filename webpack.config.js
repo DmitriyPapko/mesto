@@ -29,12 +29,6 @@ module.exports = {
             type: 'asset/resource'
           },
           {
-            test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, {
-              loader: 'css-loader'
-            }]
-          },
-          {
      
             test: /\.css$/,
             use: [MiniCssExtractPlugin.loader, {
@@ -46,7 +40,7 @@ module.exports = {
           ]
       },
       plugins: [ new HtmlWebpackPlugin({
-        template: './src/index.html' 
+        template: '../mesto/src/pages/index.html' 
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin(),

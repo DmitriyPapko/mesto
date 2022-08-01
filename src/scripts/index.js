@@ -1,3 +1,4 @@
+import '../pages/index.css'
 const btnEditPopup = document.querySelector('.profile__btn');
 const profilePopup = '.profile-popup';
 const btnClosePopup = document.querySelector('.popup__close');
@@ -50,7 +51,7 @@ const config = {
 }
 
 //Classes
-import '../pages/index.css'
+
 import { FormValidator} from '../components/FormValidator.js';
 import {Card} from '../components/Card.js'
 import Sections from '../components/Sections.js';
@@ -87,10 +88,6 @@ const handleCreateCard = (i) =>{
 }
 
 const popupAddCard = new PopupWithForm(popupCard,handleCreateCard);
-
-
-
-
 
 
 const  handleCardClick = (name, link)  => {

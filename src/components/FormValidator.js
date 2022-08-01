@@ -59,9 +59,16 @@ export class FormValidator {
         });
         this.toggleButtonState();
       }; 
+
+     
       
       enableValidation ()  {  
         this.toggleButtonState();   
         this._setEventListeners() 
       }; 
+    
     }
+
+
+
+

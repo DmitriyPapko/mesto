@@ -1,11 +1,12 @@
 
-import{ openPopup, zoomPopup} from './index.js'
+// import{ openPopup, zoomPopup} from './index.js'
 class Card {
-    constructor(item, cardTemplate){
+    constructor(item, cardTemplate, handleCardClick){
       this._name = item.name;
       this._link = item.link;
       this._alt = item.alt;
       this._cardTemplate = cardTemplate;
+      this._handleCardClick = handleCardClick;
     }
 
     _getTemplate(){
@@ -20,7 +21,10 @@ class Card {
         this._card.querySelector('.element__basket')
             .addEventListener('click', this._deleteCard);
         this._card.querySelector('.element__heart')
-            .addEventListener('click', this._likeCard);       
+            .addEventListener('click', this._likeCard); 
+        this.link.addEventListener('click', () => {
+            this._handleCardClick(this._name, this._link)
+        })   
     }
 
 
@@ -41,18 +45,6 @@ class Card {
         this.link.alt = this._alt;
         this.name.textContent = this._name;
         this._addEventListeners();
-
-        this.link
-        .addEventListener('click', 
-        () =>{
-            this.nameZoom = document.querySelector('.zoom-popup__text');
-            this.imgZoom = document.querySelector('.zoom-popup__image');
-            this.nameZoom.textContent = this._name;
-            this.imgZoom.src = this._link;
-            this.imgZoom.alt = this._alt;
-            openPopup(zoomPopup)
-        });
-        
         return this._card;
     }
 }

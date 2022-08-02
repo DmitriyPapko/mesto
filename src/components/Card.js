@@ -1,5 +1,5 @@
 
-///// import{ openPopup, zoomPopup} from './index.js'
+/// import{ openPopup, zoomPopup} from './index.js'
 class Card {
     constructor(item, cardTemplate, handleCardClick){
       this._name = item.name;

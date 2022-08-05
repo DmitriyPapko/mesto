@@ -14,15 +14,15 @@
         document.addEventListener('keyup', this._handleEscClose)    
     }
   
-   _handleEscClose(e){
-       if(e.key === 'Escape'){
+   _handleEscClose(event){
+       if(event.key === 'Escape'){
         this.close();
        }  
    }
 
    setEventListeners(){
-    this._selectorPopup.addEventListener('mousedown', (e) => { 
-       if ( e.target.classList.contains('popup__close') || e.target.classList.contains('popup_opened')){
+    this._selectorPopup.addEventListener('mousedown', (event) => { 
+       if ( event.target.classList.contains('popup__close') || event.target.classList.contains('popup_opened')){
         this.close();
        }
     })

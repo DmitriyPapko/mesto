@@ -10,7 +10,7 @@
     cursor: pointer;
     background: url(../../../img/CloseIcon.svg) no-repeat;
     background-position:center;
-    
+    transition: all 0.5s ease;
 }
 .popup__close:hover{
     opacity: 0.6;

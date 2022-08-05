@@ -12,16 +12,16 @@ import {Popup } from './Popup.js';
 
       _getInputValues(){
           this._data = {};
-          this._formInputs.forEach(i => {
-            return this._data[i.id] = i.value
+          this._formInputs.forEach(item => {
+            return this._data[item.id] = item.value
            });
            return this._formInputs;
       }
 
       setEventListeners(){
         super.setEventListeners()
-        this._form.addEventListener('submit', (e)=>{
-          e.preventDefault()
+        this._form.addEventListener('submit', (event)=>{
+          event.preventDefault()
           this._submitForm(this._getInputValues())
         } )
       } 

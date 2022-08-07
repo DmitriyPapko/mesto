@@ -25,9 +25,6 @@ const submitProfile = (user) => {
 const popupEditProfile = new PopupWithForm(profilePopup, submitProfile);
 
 const handleCreateCard = (item) => {
-  item = {
-
-  }
   item.name = cardInputName.value;
   item.link = cardInputImgLink.value
   const card = createCard(item);
@@ -45,6 +42,7 @@ popupEditProfile.setEventListeners();
 zoomPopupOpen.setEventListeners();
 
 const openPopupedit = () => {
+  validateProfile.toggleButtonState();
   popupEditProfile.open()
 }
 const closePopupEdit = () => {
@@ -56,15 +54,18 @@ btnClosePopup.addEventListener('click', () => {
 })
 
 btnEditPopup.addEventListener('click', () => {
+  validateProfile.toggleButtonState();
   popupEditProfile.setInputValues(userInfo.getUserInfo());
   openPopupedit();
 });
 
 const cardAddbtn = () => {
+  
   popupAddCard.open();
 }
 
 btnAddCard.addEventListener('click', () => {
+  validateNewPlace.toggleButtonState();
   cardAddbtn();
 })
 
@@ -76,8 +77,8 @@ const createCard = (item) => {
 
 const cardList = new Sections({
   items: initialCards,
-  renderer: (item) => {
-    const card = createCard(item)
+  renderer: (date) => {
+    const card = createCard(date)
     cardList.addItem(card)
   }
 }, cards)

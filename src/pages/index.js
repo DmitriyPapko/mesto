@@ -1,4 +1,4 @@
-import '../pages/index.css'
+import './index.css'
 import { btnEditPopup, profilePopup, btnClosePopup, profileTitle, profileSubtitle, popupInputName,
    popupInputJob, cards, cardInputName, cardInputImgLink, zoomPopup, btnAddCard, 
    formProfile, popupCard, formNewPlace, templateCard, initialCards, config} from '../utils/constants'

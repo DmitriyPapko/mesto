@@ -41,3 +41,14 @@
 @import url(../blocks/popup/__input/popup__input_error.css);
 @import url(../blocks/form/form__input-error.css);
 @import url(../blocks/form/form__fieldset.css);
+@import url(../blocks/element/__like-number/element__like-number.css);
+@import url(../blocks/popup/__delete/popup__delete.css);
+@import url(../blocks/popup/__delete-accept/popup__delete-accept.css);
+@import url(../blocks/popup/__delete-close/popup__delete-close.css);
+@import url(../blocks/popup/__delete-massage/popup__delete-massage.css);
+@import url(../blocks/popup/__delete-container/popup__delete-container.css);
+@import url(../blocks/popup/__update-accept/popup__update-accept.css);
+@import url(../blocks/popup/__update-container/popup__update-container.css);
+@import url(../blocks/popup/__update-massage/popup__update-massage.css);
+@import url(../blocks/popup/__update/popup__update.css);
+@import url(../blocks/popup/__form-update/popup__form-update.css);

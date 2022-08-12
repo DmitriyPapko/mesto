@@ -77,8 +77,8 @@ const createCard = (item) => {
 
 const cardList = new Sections({
   items: initialCards,
-  renderer: (date) => {
-    const card = createCard(date)
+  renderer: (data) => {
+    const card = createCard(data)
     cardList.addItem(card)
   }
 }, cards)
@@ -95,3 +95,21 @@ enableValidation(config)
 
 
 export { config }
+
+// fetch('https://mesto.nomoreparties.co/v1/cohort-47', {
+//   headers: {
+//     authorization: '3b64a3da-1d61-4d4d-9880-31d22a99d7b3',
+//     'Content-Type': 'application/json'
+//   }
+// })
+//   .then((result) => {
+//     console.log(result);
+//   }); 
+// function getPosts() {
+//   fetch('https://jsonplaceholder.typicode.com/posts')
+//       .then(res => res.json())
+//       .then((data) => console.log(data))
+//   }
+  
+//   getPosts();
+  

@@ -52,3 +52,5 @@
 @import url(../blocks/popup/__update-massage/popup__update-massage.css);
 @import url(../blocks/popup/__update/popup__update.css);
 @import url(../blocks/popup/__form-update/popup__form-update.css);
+@import url(../blocks/profile/__avatar-btn/profile__avatar-btn.css);
+@import url(../blocks/profile/__container/profile__container.css);

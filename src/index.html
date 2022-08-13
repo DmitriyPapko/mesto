@@ -15,7 +15,11 @@
         </header>
         <main class="content">
             <section class="profile">
-                <img src='<%=require("./img/image.png")%>' alt="лого" class="profile__avatar">
+                <div class= "profile__container">                
+                        <img src='<%=require("./img/image.png")%>' alt="лого" class="profile__avatar">
+                        <button class="profile__avatar-btn"></button>           
+                </div>
+                
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button class="profile__btn" type="button"></button>
@@ -31,7 +35,7 @@
                         <div class="element__group">
                             <h2 class="element__text"></h2>
                             <button class="element__heart" type="button"></button>
-                            <span class="element__like-number">8</span>
+                            <span class="element__like-number">0</span>
                             <button class="element__basket" type="button"></button>
                         </div>
                     </article>
@@ -123,8 +127,7 @@
         </div>
 
     </div>
-    <script type="module" src="./pages/index.js">
-    </script>
+    
 </body>
 
 </html>

@@ -2,11 +2,13 @@
     display: block;
     width: 120px;
     height: 120px;
-    background-size: 120px 120px;
     border-radius: 50%;
     grid-area: profile__avatar;
     align-self:start;
+    z-index: -1;
+    position: relative;
 }
+
 
 @media screen and (max-width:800px) {
     .profile__avatar{

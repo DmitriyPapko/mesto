@@ -14,6 +14,11 @@ const popupCard = '.popup_card';
 const formProfile = document.querySelector('.form')
 const formNewPlace = document.querySelector('.popup__form_new-place')
 const templateCard = '#template-card';
+const avatarContainer = document.querySelector('.profile__container');
+const avatarProfileImg = document.querySelector('.profile__avatar');
+const popupProfileImage = '.popup__update';
+const profileAvatarBtn = document.querySelector('.profile__avatar-btn');
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -52,4 +57,4 @@ const config = {
 
 export { btnEditPopup, profilePopup, btnClosePopup, profileTitle, profileSubtitle, 
     popupInputName, popupInputJob, templateCard, cards, cardInputName, cardInputImgLink, zoomPopup, 
-    btnAddCard, formProfile, popupCard, formNewPlace, initialCards, config }
+    btnAddCard, formProfile, popupCard, formNewPlace, initialCards, config, avatarContainer, avatarProfileImg, popupProfileImage, profileAvatarBtn }

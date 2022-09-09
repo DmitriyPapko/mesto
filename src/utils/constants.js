@@ -17,10 +17,10 @@ const formNewAvatar = document.querySelector('.popup__form-update');
 const templateCard = '#template-card';
 const avatarContainer = document.querySelector('.profile__container');
 const avatarProfileImg = document.querySelector('.profile__avatar');
-const popupProfileImage = '.popup__update';
+const popupProfileImage = '.update-popup';
 const profileAvatarBtn = document.querySelector('.profile__avatar-btn');
 const profileAvtarSubmitBtn = document.querySelector('.popup__input_zoom-link');
-const pupupDelete = '.popup__delete'
+const pupupDelete = '.delete-popup'
 
 const config = {
     formSel: '.form',
@@ -31,7 +31,9 @@ const config = {
     errorClass: 'form__input-error'
 }
 
-export { btnEditPopup, profilePopup, btnClosePopup, profileTitle, profileSubtitle, 
-    popupInputName, popupInputJob, templateCard, cards, cardInputName, cardInputImgLink, zoomPopup, 
+export {
+    btnEditPopup, profilePopup, btnClosePopup, profileTitle, profileSubtitle,
+    popupInputName, popupInputJob, templateCard, cards, cardInputName, cardInputImgLink, zoomPopup,
     btnAddCard, formProfile, popupCard, formNewPlace, config, avatarContainer,
-     avatarProfileImg, popupProfileImage, profileAvatarBtn, profileAvtarSubmitBtn, formNewAvatar, pupupDelete  }
+    avatarProfileImg, popupProfileImage, profileAvatarBtn, profileAvtarSubmitBtn, formNewAvatar, pupupDelete
+}

@@ -1,9 +1,9 @@
 //imports
 import './index.css'
 import {
-  btnEditPopup, profilePopup, btnClosePopup, profileTitle, profileSubtitle, popupInputName,
-  popupInputJob, cards, cardInputName, cardInputImgLink, zoomPopup, btnAddCard,
-  formProfile, popupCard, formNewPlace, templateCard, initialCards, config, avatarContainer, avatarProfileImg, popupProfileImage, profileAvatarBtn
+  btnEditPopup, profilePopup, btnClosePopup, profileTitle, profileSubtitle, cards, zoomPopup, btnAddCard,
+  formProfile, popupCard, formNewPlace, templateCard, config, avatarContainer, avatarProfileImg,
+  popupProfileImage, profileAvatarBtn, formNewAvatar, pupupDelete
 } from '../utils/constants'
 import { FormValidator } from '../components/FormValidator.js';
 import { Card } from '../components/Card.js'
@@ -12,17 +12,17 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api';
-import PopupWhithProfile from '../components/PopupWhithProfile';
+import PopupWithDel from '../components/PopupWithDel';
+
 
 const validateProfile = new FormValidator(config, formProfile);
 const validateNewPlace = new FormValidator(config, formNewPlace);
-const objectSelector = { name: profileTitle, about: profileSubtitle };
+const validateAvatar = new FormValidator(config, formNewAvatar)
+const objectSelector = { name: profileTitle, about: profileSubtitle, avatar: avatarProfileImg };
 const userInfo = new UserInfo(objectSelector);
 const zoomPopupOpen = new PopupWithImage(zoomPopup);
-const profileImageOpen = new PopupWhithProfile(popupProfileImage);
 
 
-profileImageOpen.setEventListeners();
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-47',
@@ -33,47 +33,25 @@ const api = new Api({
 })
 
 
-const handleCreateCard = (item) => {
-  item.name = cardInputName.value;
-  item.link = cardInputImgLink.value
-  const card = createCard(item);
-  cardList.addItem(card);
-  popupAddCard.close();
-}
-
 const openProfileAvatarEdit = () => {
-  profileImageOpen.open();
+  editAvatarImg.open();
 }
-
 
 profileAvatarBtn.addEventListener('click', openProfileAvatarEdit)
 
-const submitProfile = (user) => {
-  user.name = popupInputName.value;
-  user.about = popupInputJob.value;
-  userInfo.setUserInfo(user)
-  popupEditProfile.close();
-}
-
-const popupEditProfile = new PopupWithForm(profilePopup, submitProfile);
-
-
-
-const popupAddCard = new PopupWithForm(popupCard, handleCreateCard);
 
 const handleCardClick = (name, link) => {
   zoomPopupOpen.open(name, link);
 }
-popupAddCard.setEventListeners();
-popupEditProfile.setEventListeners();
-zoomPopupOpen.setEventListeners();
+
 
 const openPopupedit = () => {
   validateProfile.toggleButtonState();
-  popupEditProfile.open()
+  editProfileInfo.open()
 }
+
 const closePopupEdit = () => {
-  popupEditProfile.close()
+  editProfileInfo.close()
 }
 
 btnClosePopup.addEventListener('click', () => {
@@ -82,44 +60,134 @@ btnClosePopup.addEventListener('click', () => {
 
 btnEditPopup.addEventListener('click', () => {
   validateProfile.toggleButtonState();
-  popupEditProfile.setInputValues(userInfo.getUserInfo());
+  editProfileInfo.setInputValues(userInfo.getUserInfo());
   openPopupedit();
 });
 
 const cardAddbtn = () => {
-  popupAddCard.open();
+  createNewCard.open();
 }
 
 btnAddCard.addEventListener('click', () => {
+  createNewCard.open()
   validateNewPlace.toggleButtonState();
   cardAddbtn();
 })
 
-const createCard = (item) => {
-  const card = new Card(item, templateCard, handleCardClick)
-  return card.render();
-}
-
 const cardList = new Sections({
-  items: initialCards,
   renderer: (data) => {
-    const card = createCard(data)
+    let card = handleCreateCard(data)
     cardList.addItem(card)
   }
 }, cards)
-cardList.renderItems();
 
 
 const enableValidation = () => {
   validateProfile.enableValidation();
   validateNewPlace.enableValidation();
+  validateAvatar.enableValidation();
 }
 
 
 enableValidation(config)
 
 
-//Проверка hover у контейнера профиля, чтобы поменять опасити у изображения профиля.
+let userId;
+
+const createNewCard = new PopupWithForm(popupCard, (data) => {
+  createNewCard.loading(true, 'Сохранение...');
+  api.addCard(data)
+    .then((card) => {
+      cardList.addItem(handleCreateCard(card))
+      createNewCard.close();
+    }).catch((err) => console.log(err))
+    .finally(() => { createNewCard.loading(false, 'Создать') })
+});
+
+
+const deletePersonalCard = new PopupWithDel(pupupDelete, (data, card) => {
+  deletePersonalCard.loading(true, 'Удаление...');
+  api.deleteCard(data._id)
+    .then(() => {
+      newCard.deleteCard()
+      deletePersonalCard.close()
+    }).catch((err) => console.log(err))
+    .finally(() => (deletePersonalCard.loading(false, 'Удалить')))
+})
+
+deletePersonalCard.setEventListeners();
+
+const editProfileInfo = new PopupWithForm(profilePopup, (data) => {
+  editProfileInfo.loading(true, 'Сохранение...');
+  api.editProfile(data)
+    .then((user) => {
+      userInfo.setUserInfo(user)
+      editProfileInfo.close();
+    }).catch((err) => console.log(err))
+    .finally(() => { editProfileInfo.loading(false, 'Сохранить') })
+});
+
+
+const editAvatarImg = new PopupWithForm(popupProfileImage, (data) => {
+  editAvatarImg.loading(true, 'Сохранение...');
+  api.editProfileImage(data)
+    .then((user) => {
+      userInfo.setUserInfo(user)
+      editAvatarImg.close();
+    }).catch((err) => console.log(err))
+    .finally(() => { editAvatarImg.loading(false, 'Сохранение...') })
+})
+
+
+const handleDeleteCard = (data, card) => {
+  return deletePersonalCard.open(data, card)
+}
+
+editAvatarImg.setEventListeners();
+createNewCard.setEventListeners();
+editProfileInfo.setEventListeners();
+zoomPopupOpen.setEventListeners();
+
+let newCard;
+
+const handleCreateCard = (card) => {
+  newCard = new Card(card, templateCard, handleCardClick, userId, handleDeleteCard,
+    {
+      handleLikeCard: () => {
+        api
+          .addCardLike(card._id)
+          .then((res) => {
+            newCard.likeCard();
+            newCard.setLikes(res);
+          })
+          .catch((err) => console.log(err));
+      },
+      handleDelLike: () => {
+        api.removeCardLike(card._id)
+          .then((res) => {
+            newCard.deleteLikeCard();
+            newCard.setLikes(res);
+          }).catch((err) => console.log(err))
+      }
+
+    }
+
+  )
+  return newCard.render();
+
+};
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([cards, users]) => {
+    userId = users._id;
+    userInfo.setUserInfo(users)
+    cardList.renderItems(cards.reverse())
+  }).catch((err) => (console.log(err)))
+
+
+export { config }
+
+
 const checkHover = (event) => {
   switch (event.type) {
     case 'mouseover':
@@ -132,7 +200,4 @@ const checkHover = (event) => {
 }
 avatarContainer.addEventListener('mouseover', checkHover);
 avatarContainer.addEventListener('mouseout', checkHover);
-
-
-export { config }
 

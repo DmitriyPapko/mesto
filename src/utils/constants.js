@@ -11,40 +11,16 @@ const cardInputImgLink = document.querySelector('.popup__input_zoom-link');
 const zoomPopup = '.zoom-popup';
 const btnAddCard = document.querySelector('.profile__add-btn');
 const popupCard = '.popup_card';
-const formProfile = document.querySelector('.form')
-const formNewPlace = document.querySelector('.popup__form_new-place')
+const formProfile = document.querySelector('.form');
+const formNewPlace = document.querySelector('.popup__form_new-place');
+const formNewAvatar = document.querySelector('.popup__form-update');
 const templateCard = '#template-card';
 const avatarContainer = document.querySelector('.profile__container');
 const avatarProfileImg = document.querySelector('.profile__avatar');
 const popupProfileImage = '.popup__update';
 const profileAvatarBtn = document.querySelector('.profile__avatar-btn');
-
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+const profileAvtarSubmitBtn = document.querySelector('.popup__input_zoom-link');
+const pupupDelete = '.popup__delete'
 
 const config = {
     formSel: '.form',
@@ -57,4 +33,5 @@ const config = {
 
 export { btnEditPopup, profilePopup, btnClosePopup, profileTitle, profileSubtitle, 
     popupInputName, popupInputJob, templateCard, cards, cardInputName, cardInputImgLink, zoomPopup, 
-    btnAddCard, formProfile, popupCard, formNewPlace, initialCards, config, avatarContainer, avatarProfileImg, popupProfileImage, profileAvatarBtn }
+    btnAddCard, formProfile, popupCard, formNewPlace, config, avatarContainer,
+     avatarProfileImg, popupProfileImage, profileAvatarBtn, profileAvtarSubmitBtn, formNewAvatar, pupupDelete  }

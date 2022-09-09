@@ -1,28 +1,27 @@
 export default class Api {
-        constructor(options){
+        constructor(options){         
             this.baseUrl = options.baseUrl;
-            this.headerds = options.headerds;
+            this.headers = options.headers;
         }
-        _getHeaders(){
-            //?
-        }
+
         _getJsonOrError(res){
             if (res.ok){
                 return res.json();
             }
-            throw new Error('Ошибка при загрузке данных');
+            // throw new Error('Ошибка при загрузке данных');
+            return Promise.reject('err')
         }
 
         getInitialCards(){
             return fetch(`${this.baseUrl}/cards`, {
-                headerds:this.headerds
+                headers:this.headers
             })
-            .then(this._getJsonOrError);
+            .then(this._getJsonOrError)
         }
         
         getUserInfo(){
             return fetch(`${this.baseUrl}/users/me`, {
-                headerds:this.headerds,
+                headers:this.headers,
             })
             .then(this._getJsonOrError);
         }
@@ -30,7 +29,7 @@ export default class Api {
        editProfile(user){
         return fetch(`${this.baseUrl}/users/me`, {
             method: 'PATCH',
-            headerds:this.headerds,
+            headers:this.headers,
             body:JSON.stringify({name:user.name, about:user.about})
         })
         .then(this._getJsonOrError);
@@ -39,8 +38,8 @@ export default class Api {
        addCard(card){
         return fetch(`${this.baseUrl}/cards`, {
             method:'POST',
-            headerds:this.headerds,
-            body:JSON.stringify({card})
+            headers:this.headers,
+            body:JSON.stringify(card)
         })
         .then(this._getJsonOrError);   
        }
@@ -48,21 +47,21 @@ export default class Api {
        addCardLike(id){
         return fetch(`${this.baseUrl}/cards/${id}/likes`, {
           method: 'PUT',
-          headers: this._headers,
+          headers: this.headers,
         })
         .then(this._getJsonOrError);
       }
 
-      removeCardLike(){
+      removeCardLike(id){
         return fetch(`${this.baseUrl}/cards/${id}/likes`, {
             method: 'DELETE',
-            headers: this._headers,
+            headers: this.headers,
           })
           .then(this._getJsonOrError);
       }
 
        deleteCard(id){
-        return fetch(`${this.base}/cards${id}`, {
+        return fetch(`${this.baseUrl}/cards/${id}`, {
             method: 'DELETE',
             headers: this.headers,
         })
@@ -70,9 +69,9 @@ export default class Api {
     }
       
      editProfileImage(img){
-        return fetch(`${this.baseUrl}/users/me`, {
+        return fetch(`${this.baseUrl}/users/me/avatar`, {
             method: 'PATCH',
-            headerds:this.headerds,
+            headers:this.headers,
             body:JSON.stringify({avatar:img.avatar})
         })
         .then(this._getJsonOrError);

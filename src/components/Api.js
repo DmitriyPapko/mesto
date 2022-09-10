@@ -8,7 +8,6 @@ export default class Api {
             if (res.ok){
                 return res.json();
             }
-            // throw new Error('Ошибка при загрузке данных');
             return Promise.reject('err')
         }
 

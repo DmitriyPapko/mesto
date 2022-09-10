@@ -5,13 +5,14 @@ class Popup {
     }
 
     open() {
-        document.addEventListener('click', this._handleEscClose)
+        document.addEventListener('keyup', this._handleEscClose)
         this._selectorPopup.classList.add('popup_opened')
     }
 
     close() {
-        this._selectorPopup.classList.remove('popup_opened')
         document.addEventListener('keyup', this._handleEscClose)
+        this._selectorPopup.classList.remove('popup_opened')
+       
     }
 
     _handleEscClose(event) {

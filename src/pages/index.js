@@ -34,6 +34,7 @@ const api = new Api({
 
 
 const openProfileAvatarEdit = () => {
+  validateAvatar.toggleButtonState();
   editAvatarImg.open();
 }
 
@@ -109,7 +110,7 @@ const deletePersonalCard = new PopupWithDel(pupupDelete, (data, card) => {
   deletePersonalCard.loading(true, 'Удаление...');
   api.deleteCard(data._id)
     .then(() => {
-      newCard.deleteCard()
+      newCard.deleteCard(card)
       deletePersonalCard.close()
     }).catch((err) => console.log(err))
     .finally(() => (deletePersonalCard.loading(false, 'Удалить')))
@@ -135,7 +136,7 @@ const editAvatarImg = new PopupWithForm(popupProfileImage, (data) => {
       userInfo.setUserInfo(user)
       editAvatarImg.close();
     }).catch((err) => console.log(err))
-    .finally(() => { editAvatarImg.loading(false, 'Сохранение...') })
+    .finally(() => { editAvatarImg.loading(false, 'Сохранить') })
 })
 
 
@@ -157,24 +158,21 @@ const handleCreateCard = (card) => {
         api
           .addCardLike(card._id)
           .then((res) => {
-            newCard.likeCard();
-            newCard.setLikes(res);
+            // // newCard.likeCard();
+            // newCard.setLikes(res);   
           })
           .catch((err) => console.log(err));
       },
       handleDelLike: () => {
         api.removeCardLike(card._id)
           .then((res) => {
-            newCard.deleteLikeCard();
-            newCard.setLikes(res);
+            // // newCard.deleteLikeCard();
+            // newCard.setLikes(res); 
           }).catch((err) => console.log(err))
       }
-
     }
-
   )
   return newCard.render();
-
 };
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])

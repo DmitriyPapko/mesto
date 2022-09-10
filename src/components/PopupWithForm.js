@@ -15,7 +15,8 @@ export default class PopupWithForm extends Popup {
     if(download === true){
       this._btnSave.textContent = message;
     }else{
-      this._btnSave.textContent = message;
+      console.log(download)
+      this._btnSave.textContent =  message;
     }
   }
 

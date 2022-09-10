@@ -47,9 +47,9 @@
 @import url(../blocks/delete-popup/__massage/delete-popup__massage.css);
 @import url(../blocks/delete-popup/_close/delete-popup__close.css);
 @import url(../blocks/delete-popup/delete-popup.css);
-@import url(../blocks/update-popup/__accept/popup__update-accept.css);
-@import url(../blocks/update-popup/__container/popup__update-container.css);
-@import url(../blocks/update-popup/__update-massage/popup__update-massage.css);
+@import url(../blocks/update-popup/__accept/update-popup__accept.css);
+@import url(../blocks/update-popup/__container/update-popup__container.css);
+@import url(../blocks/update-popup/__update-massage/update-popup__massage.css);
 @import url(../blocks/popup/__form-update/popup__form-update.css);
 @import url(../blocks/profile/__avatar-btn/profile__avatar-btn.css);
 @import url(../blocks/profile/__container/profile__container.css);

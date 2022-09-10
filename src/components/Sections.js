@@ -1,8 +1,8 @@
 export default class Sections {
-    constructor({ items, renderer }, containerSelector) {
+    constructor({ items, renderer }, containerElement) {
         this._renderedItems = items;
         this._renderer = renderer;
-        this._containerSelector = containerSelector;
+        this._containerElement = containerElement;
     }
 
     renderItems(cards) {
@@ -13,7 +13,7 @@ export default class Sections {
     }
 
     addItem(element) { 
-        this._containerSelector.prepend(element);
+        this._containerElement.prepend(element);
     }
 
 }

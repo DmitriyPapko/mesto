@@ -11,7 +11,7 @@ class Card {
     this._handleLikeCard = handleLikeCard;
     this._handleDelLike = handleDelLike;
     this._item = item;
-    this._likes = item.likes;
+    this._likes = item.likes;//Получаю лайки
     this._ownerId = item.owner._id;
   }
 
@@ -23,13 +23,16 @@ class Card {
   }
 
 
-  // setLikes(likes) {
-  //   if (`${likes.likes.length}` === 0){
-  //     this._likesNum.textContent = ''
-  //   }else{
-  //     this._likesNum.textContent = `${likes.likes.length}`
-  //   }
-  // }
+  setLikes(likes) {
+    if (likes.likes.length === 0){
+      this._likesNum.textContent = '';
+    }else{
+      this._likesNum.textContent = likes.likes.length
+      console.log(this._likesNum)
+      console.log(this._likeBtn)
+    }
+   
+  }
 
   _checkOwner() {
     if (this._ownerId !== this._userId) {
@@ -57,10 +60,10 @@ class Card {
       .addEventListener('click', () => {
         this._likeBtn.classList.toggle('element__heart-active');
         if (this._likeBtn.classList.contains('element__heart-active')) {
-          this._likesNum.textContent++
+          // this._likesNum.textContent++
           this._handleLikeCard();
         } else {
-          this._likesNum.textContent--
+          // this._likesNum.textContent--
           this._handleDelLike();
         }
       });
@@ -89,9 +92,9 @@ class Card {
     this.name = this._card.querySelector('.element__text');
     this.link = this._card.querySelector('.element__img');
     this._cardDelBtn = this._card.querySelector('.element__basket');
-    this._likesNum = this._card.querySelector('.element__like-number');
-    this._likeBtn = this._card.querySelector('.element__heart');
-    this._likesNum.textContent = `${this._likes.length}`;
+    this._likesNum = this._card.querySelector('.element__like-number');//СЧЕТЧИК ЛАЙКОВ
+    this._likeBtn = this._card.querySelector('.element__heart');//КНОПКА ЛАЙКА
+    this._likesNum.textContent = `${this._likes.length}`; //ПРИ РЕНДЕРЕ МЕНЯЮ ЗНАЧЕНИЯ СЧЕТЧИКОВ
     this.link.src = this._link;
     this.link.alt = this._alt;
     this.name.textContent = this._name;

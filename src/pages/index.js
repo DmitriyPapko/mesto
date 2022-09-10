@@ -18,8 +18,8 @@ import PopupWithDel from '../components/PopupWithDel';
 const validateProfile = new FormValidator(config, formProfile);
 const validateNewPlace = new FormValidator(config, formNewPlace);
 const validateAvatar = new FormValidator(config, formNewAvatar)
-const objectSelector = { name: profileTitle, about: profileSubtitle, avatar: avatarProfileImg };
-const userInfo = new UserInfo(objectSelector);
+const objectElements = { name: profileTitle, about: profileSubtitle, avatar: avatarProfileImg };
+const userInfo = new UserInfo(objectElements);
 const zoomPopupOpen = new PopupWithImage(zoomPopup);
 
 
@@ -51,13 +51,7 @@ const openPopupedit = () => {
   editProfileInfo.open()
 }
 
-const closePopupEdit = () => {
-  editProfileInfo.close()
-}
 
-btnClosePopup.addEventListener('click', () => {
-  closePopupEdit();
-})
 
 btnEditPopup.addEventListener('click', () => {
   validateProfile.toggleButtonState();
@@ -65,19 +59,15 @@ btnEditPopup.addEventListener('click', () => {
   openPopupedit();
 });
 
-const cardAddbtn = () => {
-  createNewCard.open();
-}
 
 btnAddCard.addEventListener('click', () => {
   createNewCard.open()
   validateNewPlace.toggleButtonState();
-  cardAddbtn();
 })
 
 const cardList = new Sections({
   renderer: (data) => {
-    let card = handleCreateCard(data)
+    const card = handleCreateCard(data)
     cardList.addItem(card)
   }
 }, cards)
@@ -110,7 +100,7 @@ const deletePersonalCard = new PopupWithDel(pupupDelete, (data, card) => {
   deletePersonalCard.loading(true, 'Удаление...');
   api.deleteCard(data._id)
     .then(() => {
-      newCard.deleteCard(card)
+      newCard1.deleteCard(card)
       deletePersonalCard.close()
     }).catch((err) => console.log(err))
     .finally(() => (deletePersonalCard.loading(false, 'Удалить')))
@@ -152,28 +142,30 @@ zoomPopupOpen.setEventListeners();
 let newCard;
 
 const handleCreateCard = (card) => {
-  newCard = new Card(card, templateCard, handleCardClick, userId, handleDeleteCard,
+   newCard = new Card(card, templateCard, handleCardClick, userId, handleDeleteCard,
     {
       handleLikeCard: () => {
         api
           .addCardLike(card._id)
           .then((res) => {
-            // // newCard.likeCard();
-            // newCard.setLikes(res);   
+            newCard.likeCard();
+            newCard.setLikes(res); 
           })
           .catch((err) => console.log(err));
       },
       handleDelLike: () => {
         api.removeCardLike(card._id)
           .then((res) => {
-            // // newCard.deleteLikeCard();
-            // newCard.setLikes(res); 
+            newCard.deleteLikeCard();
+            newCard.setLikes(res);
           }).catch((err) => console.log(err))
       }
     }
   )
   return newCard.render();
 };
+
+
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cards, users]) => {

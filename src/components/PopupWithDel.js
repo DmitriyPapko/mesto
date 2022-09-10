@@ -28,9 +28,6 @@ export default class PopupWithDel extends Popup {
     }
   
 
-    close(){
-      super.close()
-    }
 
     setEventListeners() {
         super.setEventListeners();

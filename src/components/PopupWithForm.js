@@ -40,8 +40,9 @@ export default class PopupWithForm extends Popup {
 
 
   setInputValues(data) {
-    this._formInputName.value = data.name;
-    this._formInputJob.value = data.about;
+    this._formInputs.forEach(input =>{
+      input.value = data[input.name]
+    })
   }
 
 

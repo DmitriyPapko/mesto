@@ -1,7 +1,7 @@
 //imports
 import './index.css'
 import {
-  btnEditPopup, profilePopup, btnClosePopup, profileTitle, profileSubtitle, cards, zoomPopup, btnAddCard,
+  btnEditPopup, profilePopup,  profileTitle, profileSubtitle, cards, zoomPopup, btnAddCard,
   formProfile, popupCard, formNewPlace, templateCard, config, avatarContainer, avatarProfileImg,
   popupProfileImage, profileAvatarBtn, formNewAvatar, pupupDelete
 } from '../utils/constants'
@@ -100,7 +100,8 @@ const deletePersonalCard = new PopupWithDel(pupupDelete, (data, card) => {
   deletePersonalCard.loading(true, 'Удаление...');
   api.deleteCard(data._id)
     .then(() => {
-      newCard1.deleteCard(card)
+      card.remove();
+      card = null;
       deletePersonalCard.close()
     }).catch((err) => console.log(err))
     .finally(() => (deletePersonalCard.loading(false, 'Удалить')))
@@ -139,24 +140,23 @@ createNewCard.setEventListeners();
 editProfileInfo.setEventListeners();
 zoomPopupOpen.setEventListeners();
 
-let newCard;
+
 
 const handleCreateCard = (card) => {
-   newCard = new Card(card, templateCard, handleCardClick, userId, handleDeleteCard,
+  const newCard = new Card(card, templateCard, handleCardClick, userId, handleDeleteCard,
     {
-      handleLikeCard: () => {
+      handleLikeCard: (itemId) => {
         api
-          .addCardLike(card._id)
+          .addCardLike(itemId)
           .then((res) => {
-            newCard.likeCard();
             newCard.setLikes(res); 
           })
           .catch((err) => console.log(err));
       },
-      handleDelLike: () => {
-        api.removeCardLike(card._id)
-          .then((res) => {
-            newCard.deleteLikeCard();
+      handleDelLike: (itemId) => {
+        api
+        .removeCardLike(itemId)
+          .then((res) => {  
             newCard.setLikes(res);
           }).catch((err) => console.log(err))
       }

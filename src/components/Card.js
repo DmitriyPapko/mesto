@@ -25,13 +25,8 @@ class Card {
 
 
   setLikes(likes) {
-    // if (likes.likes.length === 0){
-    //   this._likesNum.textContent = '';
-    // }else{
       this._likesNum.textContent = likes.likes.length;
-      this._likeBtn.classList.toggle('element__heart-active');
-    // }
-   
+      this._likeBtn.classList.toggle('element__heart-active'); 
   }
 
   _checkOwner() {
